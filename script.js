@@ -7,6 +7,8 @@ const score0El = document.querySelector('#score--0');
 const score1El = document.getElementById('score--1');
 const current0El = document.getElementById('current--0');
 const current1El = document.getElementById('current--1');
+const message = document.querySelector('h3');
+const backgroundColor = document.querySelector('body');
 
 const diceEl = document.querySelector('.dice');
 const btnNew = document.querySelector('.btn--new');
@@ -26,6 +28,9 @@ const init = function () {
   score1El.textContent = 0;
   current0El.textContent = 0;
   current1El.textContent = 0;
+  message.textContent = 'Rules: Who reaches 100 points first win the game. Rolling the number 1 of the dice will cost all your current points and also lost your turn. Enjoy!';
+  message.style.color = '#964B00'
+  backgroundColor.classList.add('background-image');
 
   diceEl.classList.add('hidden');
   player0El.classList.remove('player--winner');
@@ -88,6 +93,10 @@ btnHold.addEventListener('click', function () {
       document
         .querySelector(`.player--${activePlayer}`)
         .classList.remove('player--active');
+      message.textContent = `Congratulation player${activePlayer+1}, you won! 🎉🎉🎉🎉`
+      message.style.color = '#0000FF';
+      backgroundColor.classList.remove('background-image');
+      backgroundColor.style.backgroundColor = '#FFFF00';
     } else {
       // Switch to the next player
       switchPlayer();
